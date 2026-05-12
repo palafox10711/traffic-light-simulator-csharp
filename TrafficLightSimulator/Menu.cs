@@ -35,15 +35,16 @@ class Menu
                         Console.WriteLine("please, enter a valid number");
                         break;
                     }
-                    
-                    if (removeInput < 1 || removeInput > _lights.Count)
+                    var light = _lights.FirstOrDefault(l => l.Id == removeInput);
+                    if (light == null)
                     {
-                        Console.WriteLine("Invalid id. Try again.");
+                        Console.WriteLine("Invalid id, try again");
                     }
                     else
                     {
-                        _lights.RemoveAt(removeInput - 1);
-                        Console.WriteLine($"Traffic light {removeInput} removed.");
+                        _lights.Remove(light);
+                        Console.WriteLine($"Traffic Light with (Id - {removeInput}) removed");
+                    
                     }
                     break;
                 case "3":
@@ -52,9 +53,9 @@ class Menu
                         Console.WriteLine("No traffic lights added yet.");
                         break;
                     }
-                    foreach(TrafficLight light in _lights)
+                    foreach(TrafficLight tl in _lights)
                     {
-                        Console.WriteLine($"Road: {light.Id} - Color: {light.Color}");
+                        Console.WriteLine($"Road: {tl.Id} - Color: {tl.Color}");
                     }
                     break;
                 case "0":
