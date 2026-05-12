@@ -1,11 +1,12 @@
-using System.Runtime.InteropServices.Marshalling;
 namespace TrafficLightSimulator;
-
-
 class Menu
 {
-    private List<TrafficLight> _lights = new List<TrafficLight>();
+    private List<TrafficLight> _lights;
     private int _nextId = 1;
+    public Menu(List<TrafficLight> lights)
+    {
+        _lights = lights;
+    }
     public void Run()
     {
         bool isRunning = true;
@@ -46,7 +47,15 @@ class Menu
                     }
                     break;
                 case "3":
-                    Console.WriteLine("System");
+                    if (_lights.Count == 0)
+                    {
+                        Console.WriteLine("No traffic lights added yet.");
+                        break;
+                    }
+                    foreach(TrafficLight light in _lights)
+                    {
+                        Console.WriteLine($"Road: {light.Id} - Color: {light.Color}");
+                    }
                     break;
                 case "0":
                     Console.WriteLine("Exiting...");
