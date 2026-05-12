@@ -1,7 +1,8 @@
 using System.Security.Authentication.ExtendedProtection;
 
-namespace TrafficLight;
+namespace TrafficLightSimulator;
 class TrafficLight{
+    
     public int Id {get; private set;}
     public LightColor Color {get; private set;}
 

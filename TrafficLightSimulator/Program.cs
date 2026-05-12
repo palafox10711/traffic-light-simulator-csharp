@@ -1,4 +1,4 @@
-﻿namespace TrafficLight;
+﻿namespace TrafficLightSimulator;
 
 class Program
 {
