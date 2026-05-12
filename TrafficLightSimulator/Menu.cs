@@ -25,16 +25,21 @@ class Menu
             switch (input)
             {
                 case "1":
+                lock(_lights){
                     _lights.Add(new TrafficLight(_nextId));
+                
                     Console.WriteLine($"Traffic light added (id = {_nextId})");
                     _nextId++;
+                }    
                     break;
                 case "2":
+                  
                     Console.WriteLine("Which traffic light do you want to remove");
                     if ( ! int.TryParse(Console.ReadLine(), out int removeInput)){
                         Console.WriteLine("please, enter a valid number");
                         break;
                     }
+                    lock(_lights){
                     var light = _lights.FirstOrDefault(l => l.Id == removeInput);
                     if (light == null)
                     {
@@ -44,8 +49,8 @@ class Menu
                     {
                         _lights.Remove(light);
                         Console.WriteLine($"Traffic Light with (Id - {removeInput}) removed");
-                    
                     }
+                }
                     break;
                 case "3":
                     if (_lights.Count == 0)
